@@ -1,17 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import Banner from "./Components/Banner";
+import TableSection from "./Components/TableSection";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+ReactDOM.render(
+  <HashRouter basename="/">
+    <React.StrictMode>
+      <AnimatePresence>
+        <Banner />
+        <Routes>
+          <Route exact path="/" element={<App />} />
+          <Route path="/tablesection" element={<TableSection />} />
+        </Routes>
+      </AnimatePresence>
+    </React.StrictMode>
+  </HashRouter>,
+  document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
